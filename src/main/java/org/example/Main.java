@@ -1,7 +1,7 @@
 package org.example;
 
 
-import APIs.LocationSystem;
+import APIs.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -58,11 +58,26 @@ public class Main {
                 for (int i = 0; i < Lion_list.size(); i++) {
                     ((Location) Lion_list.get(i)).updateLocation();
                 }
-                for (int i = 0; i < Lion_list.size(); i++) {
+                for (int i = 0; i < Keeper_list.size(); i++) {
                     ((Location) Keeper_list.get(i)).updateLocation();
                 }
-                for (int i = 0; i < Lion_list.size(); i++) {
+                for (int i = 0; i < Drone_list.size(); i++) {
                     ((Location) Drone_list.get(i)).updateLocation();
+                }
+                for (int i = 0; i < Keeper_list.size(); i++) {
+                    for (int j = 0; j < Lion_list.size(); j++) {
+                        int keeper_x = ((Location) Keeper_list.get(i)).getLocation().x;
+                        int keeper_y = ((Location) Keeper_list.get(i)).getLocation().y;
+                        int lion_x = ((Location) Lion_list.get(i)).getLocation().x;
+                        int lion_y = ((Location) Lion_list.get(i)).getLocation().y;
+                        double distance = Math.sqrt(Math.pow(keeper_x - lion_x, 2) + Math.pow(keeper_y - lion_y, 2));
+                        if (distance < 60) {
+                            AlertSystem.alertAKeeper(((Attributes) Keeper_list.get(i)).getStr_attribute());
+                            for (int k = 0; k < Drone_list.size(); k++) {
+                                AlertSystem.alertADrone(((Attributes) Drone_list.get(i)).getInt_attribute());
+                            }
+                        }
+                    }
                 }
                 drawingPanel.paintShapes();
                 drawingPanel.repaint();
