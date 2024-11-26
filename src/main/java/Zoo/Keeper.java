@@ -1,15 +1,11 @@
 package Zoo;
 
-import APIs.LocationSystem;
-
 import java.awt.*;
-import java.io.IOException;
 
 import Zoo.Abstracts.Location;
 import Zoo.Interfaces.Dots;
-import Zoo.Interfaces.Attributes;
 
-public class Keeper extends Location implements Dots, Attributes{
+public class Keeper extends Location implements Dots{
     private String name;
     private String phone_number;
     private int radius;
@@ -23,24 +19,8 @@ public class Keeper extends Location implements Dots, Attributes{
         this.color = Color.BLUE;
     }
 
-    @Override
     public String getName() {
         return name;
-    }
-
-    @Override
-    public String getClassName() {
-        return "Keeper";
-    }
-
-    @Override
-    public int getInt_attribute() {
-        return -1;
-    }
-
-    @Override
-    public String getStr_attribute() {
-        return this.getPhone_number();
     }
 
     public String getPhone_number() {
@@ -60,5 +40,10 @@ public class Keeper extends Location implements Dots, Attributes{
     @Override
     public Point getPoint() {
         return super.getLocation();
+    }
+
+    @Override
+    public String getTxt() {
+        return this.name + " " + this.phone_number;
     }
 }

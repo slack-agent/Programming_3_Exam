@@ -1,15 +1,11 @@
 package Zoo;
 
-import APIs.LocationSystem;
-
 import java.awt.*;
-import java.io.IOException;
 
 import Zoo.Abstracts.Location;
 import Zoo.Interfaces.Dots;
-import Zoo.Interfaces.Attributes;
 
-public class Drone extends Location implements Dots, Attributes{
+public class Drone extends Location implements Dots{
     private String name;
     private int radio_freq;
     private int radius;
@@ -23,24 +19,8 @@ public class Drone extends Location implements Dots, Attributes{
         this.color = Color.BLACK;
     }
 
-    @Override
     public String getName() {
         return name;
-    }
-
-    @Override
-    public String getClassName() {
-        return "Drone";
-    }
-
-    @Override
-    public int getInt_attribute() {
-        return this.getRadio_freq();
-    }
-
-    @Override
-    public String getStr_attribute() {
-        return "";
     }
 
     public int getRadio_freq() {
@@ -60,5 +40,10 @@ public class Drone extends Location implements Dots, Attributes{
     @Override
     public Point getPoint() {
         return super.getLocation();
+    }
+
+    @Override
+    public String getTxt() {
+        return this.name + " " + this.radio_freq;
     }
 }

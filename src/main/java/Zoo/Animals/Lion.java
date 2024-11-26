@@ -1,13 +1,11 @@
 package Zoo.Animals;
 
 import java.awt.*;
-import java.io.IOException;
 
 import Zoo.Abstracts.Location;
 import Zoo.Interfaces.Dots;
-import Zoo.Interfaces.Attributes;
 
-public class Lion extends Location implements Dots, Attributes{
+public class Lion extends Location implements Dots{
     private String name;
     private int age;
     private int radius;
@@ -21,24 +19,8 @@ public class Lion extends Location implements Dots, Attributes{
         this.color = Color.RED;
     }
 
-    @Override
     public String getName() {
         return name;
-    }
-
-    @Override
-    public String getClassName() {
-        return "Lion";
-    }
-
-    @Override
-    public int getInt_attribute() {
-        return this.getAge();
-    }
-
-    @Override
-    public String getStr_attribute() {
-        return "";
     }
 
     public int getAge() {
@@ -58,5 +40,10 @@ public class Lion extends Location implements Dots, Attributes{
     @Override
     public Point getPoint() {
         return super.getLocation();
+    }
+
+    @Override
+    public String getTxt() {
+        return this.name + " " + this.age;
     }
 }

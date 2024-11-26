@@ -10,6 +10,7 @@ import Zoo.Abstracts.Location;
 import Zoo.Animals.Lion;
 import Zoo.Interfaces.*;
 import Zoo.*;
+import Functions.*;
 
 import javax.swing.*;
 
@@ -29,24 +30,20 @@ public class Main {
         Drone_list.add(new Drone("Monitor1", 128, 124));
 
         ArrayList<Dots> Dots_list = new ArrayList<>();
-        ArrayList<Attributes> Attributes_list = new ArrayList<>();
 
         for (int i = 0; i < Lion_list.size(); i++) {
             Dots_list.add((Dots) Lion_list.get(i));
-            Attributes_list.add((Attributes) Lion_list.get(i));
         }
 
         for (int i = 0; i < Keeper_list.size(); i++) {
             Dots_list.add((Dots) Keeper_list.get(i));
-            Attributes_list.add((Attributes) Keeper_list.get(i));
         }
 
         for (int i = 0; i < Drone_list.size(); i++) {
             Dots_list.add((Dots) Drone_list.get(i));
-            Attributes_list.add((Attributes) Drone_list.get(i));
         }
 
-        Drawing drawingPanel = new Drawing(Dots_list, Attributes_list);
+        Drawing drawingPanel = new Drawing(Dots_list);
 
         // Add panels to frame
         frame.add(drawingPanel);
@@ -66,15 +63,12 @@ public class Main {
                 }
                 for (int i = 0; i < Keeper_list.size(); i++) {
                     for (int j = 0; j < Lion_list.size(); j++) {
-                        int keeper_x = ((Location) Keeper_list.get(i)).getLocation().x;
-                        int keeper_y = ((Location) Keeper_list.get(i)).getLocation().y;
-                        int lion_x = ((Location) Lion_list.get(i)).getLocation().x;
-                        int lion_y = ((Location) Lion_list.get(i)).getLocation().y;
-                        double distance = Math.sqrt(Math.pow(keeper_x - lion_x, 2) + Math.pow(keeper_y - lion_y, 2));
+                        double distance = Distance.getDistance(((Location) Keeper_list.get(i)).getLocation(),
+                                                               ((Location) Lion_list.get(i)).getLocation());
                         if (distance < 60) {
-                            AlertSystem.alertAKeeper(((Attributes) Keeper_list.get(i)).getStr_attribute());
+                            AlertSystem.alertAKeeper(Keeper_list.get(i).getPhone_number());
                             for (int k = 0; k < Drone_list.size(); k++) {
-                                AlertSystem.alertADrone(((Attributes) Drone_list.get(i)).getInt_attribute());
+                                AlertSystem.alertADrone(Drone_list.get(i).getRadio_freq());
                             }
                         }
                     }

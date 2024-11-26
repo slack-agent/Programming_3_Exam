@@ -1,26 +1,18 @@
 package Shape;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
 import Zoo.Interfaces.Dots;
-import Zoo.Interfaces.Attributes;
 
 public class Drawing extends JPanel {
     private final ArrayList<Shapes> shapes;
     private final ArrayList<Dots> dots;
-    private final ArrayList<Attributes> attributes;
 
-    public Drawing(ArrayList<Dots> dots, ArrayList<Attributes> attributes) {
-        if (dots.size() != attributes.size()) {
-            throw new IllegalArgumentException();
-        }
-
+    public Drawing(ArrayList<Dots> dots) {
         this.shapes = new ArrayList<>();
         this.dots = dots;
-        this.attributes = attributes;
         this.setBackground(Color.WHITE);
     }
 
@@ -38,9 +30,9 @@ public class Drawing extends JPanel {
             int radius = dots.get(i).getRadius();
             Color color = dots.get(i).getColor();
             Point point = dots.get(i).getPoint();
-            String name = attributes.get(i).getName();
+            String txt = dots.get(i).getTxt();
             System.out.println(radius + " " + color + " " + point);
-            this.shapes.add(new Circle(radius, point, color, name));
+            this.shapes.add(new Circle(radius, point, color, txt));
         }
     }
 }

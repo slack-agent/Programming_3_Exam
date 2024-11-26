@@ -6,4 +6,5 @@ public interface Dots {
     public Color getColor();
     public int getRadius();
     public Point getPoint();
+    public String getTxt();
 }
