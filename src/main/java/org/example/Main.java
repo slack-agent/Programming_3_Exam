@@ -29,21 +29,21 @@ public class Main {
         Keeper_list.add(new Keeper("Geoff", "4392", 80));
         Drone_list.add(new Drone("Monitor1", 128, 124));
 
-        ArrayList<Dots> Dots_list = new ArrayList<>();
+        ArrayList<Drawable> Drawable_list = new ArrayList<>();
 
         for (int i = 0; i < Lion_list.size(); i++) {
-            Dots_list.add((Dots) Lion_list.get(i));
+            Drawable_list.add((Drawable) Lion_list.get(i));
         }
 
         for (int i = 0; i < Keeper_list.size(); i++) {
-            Dots_list.add((Dots) Keeper_list.get(i));
+            Drawable_list.add((Drawable) Keeper_list.get(i));
         }
 
         for (int i = 0; i < Drone_list.size(); i++) {
-            Dots_list.add((Dots) Drone_list.get(i));
+            Drawable_list.add((Drawable) Drone_list.get(i));
         }
 
-        Drawing drawingPanel = new Drawing(Dots_list);
+        Drawing drawingPanel = new Drawing(Drawable_list);
 
         // Add panels to frame
         frame.add(drawingPanel);

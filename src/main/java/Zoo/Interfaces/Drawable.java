@@ -2,9 +2,10 @@ package Zoo.Interfaces;
 
 import java.awt.*;
 
-public interface Dots {
+public interface Drawable {
     public Color getColor();
-    public int getRadius();
+    public int getSize();
     public Point getPoint();
     public String getTxt();
+    public String getShape();
 }

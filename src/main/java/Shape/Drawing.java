@@ -2,17 +2,18 @@ package Shape;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.*;
 
-import Zoo.Interfaces.Dots;
+import Zoo.Interfaces.Drawable;
 
 public class Drawing extends JPanel {
     private final ArrayList<Shapes> shapes;
-    private final ArrayList<Dots> dots;
+    private final ArrayList<Drawable> drawables;
 
-    public Drawing(ArrayList<Dots> dots) {
+    public Drawing(ArrayList<Drawable> drawables) {
         this.shapes = new ArrayList<>();
-        this.dots = dots;
+        this.drawables = drawables;
         this.setBackground(Color.WHITE);
     }
 
@@ -26,13 +27,18 @@ public class Drawing extends JPanel {
 
     public void paintShapes() {
         shapes.clear();  // Clear all shapes from the list
-        for (int i = 0; i < dots.size(); i++) {
-            int radius = dots.get(i).getRadius();
-            Color color = dots.get(i).getColor();
-            Point point = dots.get(i).getPoint();
-            String txt = dots.get(i).getTxt();
-            System.out.println(radius + " " + color + " " + point);
-            this.shapes.add(new Circle(radius, point, color, txt));
+        for (int i = 0; i < drawables.size(); i++) {
+            int size = drawables.get(i).getSize();
+            Color color = drawables.get(i).getColor();
+            Point point = drawables.get(i).getPoint();
+            String txt = drawables.get(i).getTxt();
+            String shapeName = drawables.get(i).getShape();
+            System.out.println(size + " " + color + " " + point);
+            if (Objects.equals(shapeName, "Circle")) {
+                this.shapes.add(new Circle(size, point, color, txt));
+            } else if (Objects.equals(shapeName, "Rect")) {
+                this.shapes.add(new Rect(size, size, point, color, txt));
+            }
         }
     }
 }

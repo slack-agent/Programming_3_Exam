@@ -3,9 +3,9 @@ package Zoo.Animals;
 import java.awt.*;
 
 import Zoo.Abstracts.Location;
-import Zoo.Interfaces.Dots;
+import Zoo.Interfaces.Drawable;
 
-public class Lion extends Location implements Dots{
+public class Lion extends Location implements Drawable {
     private String name;
     private int age;
     private int radius;
@@ -33,7 +33,7 @@ public class Lion extends Location implements Dots{
     }
 
     @Override
-    public int getRadius() {
+    public int getSize() {
         return radius;
     }
 
@@ -45,5 +45,10 @@ public class Lion extends Location implements Dots{
     @Override
     public String getTxt() {
         return this.name + " " + this.age;
+    }
+
+    @Override
+    public String getShape() {
+        return "Circle";
     }
 }

@@ -3,9 +3,9 @@ package Zoo;
 import java.awt.*;
 
 import Zoo.Abstracts.Location;
-import Zoo.Interfaces.Dots;
+import Zoo.Interfaces.Drawable;
 
-public class Keeper extends Location implements Dots{
+public class Keeper extends Location implements Drawable{
     private String name;
     private String phone_number;
     private int radius;
@@ -33,7 +33,7 @@ public class Keeper extends Location implements Dots{
     }
 
     @Override
-    public int getRadius() {
+    public int getSize() {
         return radius;
     }
 
@@ -45,5 +45,10 @@ public class Keeper extends Location implements Dots{
     @Override
     public String getTxt() {
         return this.name + " " + this.phone_number;
+    }
+
+    @Override
+    public String getShape() {
+        return "Circle";
     }
 }
