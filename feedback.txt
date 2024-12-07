@@ -1,0 +1,8 @@
+Classes	and Inheritance	: 
+Encapsulation : 
+Polymorphism : 
+Exceptions and Error handling : 
+Organization : 
+Attempt : 
+Flexibility for Future : 
+Alerts :
