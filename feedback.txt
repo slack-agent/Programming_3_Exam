@@ -1,8 +1,9 @@
 Classes	and Inheritance	: Good naming of classes, and good use of the 'Location' superclass, although you could have
 included the name variable in the superclass as it is common to Drone, Keeper and Lion. The functions from the
  AlertSystem API could have been called from functions inside the Lion and Drone classes - 8
-Encapsulation : Good use of private variables and getters and setters - 10
-Polymorphism : Good - 10
+Encapsulation : Good use of private variables and getters, but some setters are missing - 9
+Polymorphism : This works, but it would have been better to include an abstract draw method in Location, and have
+the Lion, Keeper and Drone classes override this to draw their respective shapes - 9
 Exceptions and Error handling : Excellent! You've even considered the case where getCoords() returns null - 13
 Organization : Great use of packages - 10
 Attempt : It works, nice! - 10
